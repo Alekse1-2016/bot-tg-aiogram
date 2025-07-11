@@ -97,15 +97,6 @@ async def proccess_start(message:Message):
 async def echo(message:Message):
     await message.answer(text=message.text)
 
-async def echo_image(message:Message):
-    await message.reply_photo(message.photo[0].file_id)
-
-async def echo_sticker(message:Message):
-    await message.answer_sticker(message.sticker.file_id)
-
-async def echo_document(message:Message):
-    await message.answer_document(message.document.file_id)
-
 obosratsa=KeyboardButton(text="Обосрался")
 kb=ReplyKeyboardMarkup(keyboard=[[obosratsa]],one_time_keyboard=True)
 @dp.message(Command(commands=["start_meme"]))
@@ -173,9 +164,6 @@ dp.message.register(meme,Command(commands=["meme"]))
 dp.message.register(demo,Command(commands=["demo"]))
 dp.message.register(working_calc1,Command(commands=["w_calc"]))
 dp.message.register(working_calc2,F.text)
-dp.message.register(echo_document,F.conten_type == ContentType.DOCUMENT)
-dp.message.register(echo_sticker,F.sticker)
-dp.message.register(echo_image,F.content_type == ContentType.PHOTO)
 dp.message.register(proccess_start,Command(commands=["start"]))
 #dp.message.register(echo)
 
