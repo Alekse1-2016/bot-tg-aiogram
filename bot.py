@@ -23,6 +23,7 @@ kb2=InlineKeyboardMarkup(inline_keyboard=[[poshol_v_jopu]])
 
 async def set_menu(bot:Bot):
     commands_menu=[
+        BotCommand(command="/start",descreption="первай команда"),
         BotCommand(command="/help",description="помощь"),
         BotCommand(command="/calc",description="нерабочий калькулятор"),
         BotCommand(command="/game",description="игра"),
@@ -33,7 +34,7 @@ async def set_menu(bot:Bot):
         BotCommand(command="/mine_efirum",description="майнить эфирум"),
         BotCommand(command="/bruteforce",description="кратко о брутофорсе"),
         BotCommand(command="/usdtorub",description="доллар сша в рублях (актуаьно на 11.07.2025)")
-    ]
+        ]
     await bot.set_my_commands(commands_menu)
 dp.startup.register(set_menu)
 
