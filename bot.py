@@ -23,7 +23,7 @@ kb2=InlineKeyboardMarkup(inline_keyboard=[[poshol_v_jopu]])
 
 async def set_menu(bot:Bot):
     commands_menu=[
-        BotCommand(command="/start",descreption="первай команда"),
+        BotCommand(command="/start",description="первая команда"),
         BotCommand(command="/help",description="помощь"),
         BotCommand(command="/calc",description="нерабочий калькулятор"),
         BotCommand(command="/game",description="игра"),
