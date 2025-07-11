@@ -37,74 +37,6 @@ async def set_menu(bot:Bot):
     await bot.set_my_commands(commands_menu)
 dp.startup.register(set_menu)
 
-async def help(message:Message):
-    await message.answer(text="Позвони в 112, не знаю ¯\_(ツ)_/¯")
-async def calc(message:Message):
-    await message.answer(text="Win+R calc.exe ^_^")
-async def game(message:Message):
-    await message.answer(text="квак 3 арена запусти, не знаю =)")
-async def meme(message:Message):
-    await message.answer(text="👇ВНИЗУ ССЫЛКА НА НИНДЗЯГРАМ👇",reply_markup=kb2)
-async def demo(message:Message):
-    await message.answer(text="Привет я де***о-свинья. я умею... ну пока ничего дельного . пожалуйста попользуйтесь этим ботом :3")
-async def usd_to_rub(message:Message):
-    await message.answer(text="1 USD = 77,80 RUB (11.07.2025)")
-async def working_calc1(message:Message):
-    await message.answer(text="Введи числа для действий через пробел:")
-async def working_calc2(message:Message):
-    global a, b
-    if message.text in ['Сложить', "Вычесть", "Перемножить", "Разделить"]:
-        if message.text=="Сложить":
-            await message.answer(text="Плюсую...")
-            c=a+b
-            await message.answer(text=f"Готово! Ответ: {c}")
-        if message.text=="Вычесть":
-            await message.answer(text="Вычитаю...")
-            c=a-b
-            await message.answer(text=f"Готово! Ответ: {c}")
-        if message.text=="Перемножить":
-            await message.answer(text="Умножаю...")
-            c=a*b
-            await message.answer(text=f"Готово! Ответ: {c}")
-        if message.text=="Разделить":
-            await message.answer(text="Делю...")
-            c=a/b
-            await message.answer(text=f"Готово! Ответ: {c}")
-    else:
-        numbers = list(map(int, message.text.split(' ')))
-        if len(numbers) == 2:
-            a, b = numbers
-            await message.answer(text="Выбери действие👇",reply_markup=kb3)
-
-dp.message.register(usd_to_rub,Command(commands=["usdtorub"]))
-
-dp.message.register(help,Command(commands=["help"]))
-dp.message.register(calc,Command(commands=["calc"]))
-dp.message.register(game,Command(commands=["game"]))
-dp.message.register(meme,Command(commands=["meme"]))
-dp.message.register(demo,Command(commands=["demo"]))
-dp.message.register(working_calc1,Command(commands=["w_calc"]))
-dp.message.register(working_calc2,F.text)
-
-
-obosratsa=KeyboardButton(text="Обосрался")
-kb=ReplyKeyboardMarkup(keyboard=[[obosratsa]],one_time_keyboard=True)
-@dp.message(Command(commands=["start_meme"]))
-async def start_obosratsa(message:Message):
-    await message.answer(text="Бу!")
-    await message.answer(text="Испгался?",reply_markup=kb)
-@dp.message(F.text=="Обосрался")
-async def procces_button(message:Message):
-    await message.answer(text="Трус)",reply_markup=ReplyKeyboardRemove())
-
-@dp.message(Command(commands=["bruteforce"]))
-async def bruteforce_start(message:Message):
-    await message.answer(text="Полный перебор (или метод «грубой силы», англ. brute force) — метод решения математических задач. Относится к классу методов поиска решения исчерпыванием всевозможных вариантов[англ.]. Сложность полного перебора зависит от количества всех возможных решений задачи. Если пространство решений очень велико, то полный перебор может не дать результатов в течение нескольких лет или даже столетий.")
-
-@dp.message(Command(commands=["mine_efirum"]))
-async def mine_start(message:Message):
-    await message.answer(text="Майню эфирум...")
-
 user={
     "random_number":None,
     "attempts":None,
@@ -174,6 +106,73 @@ async def echo_sticker(message:Message):
 async def echo_document(message:Message):
     await message.answer_document(message.document.file_id)
 
+obosratsa=KeyboardButton(text="Обосрался")
+kb=ReplyKeyboardMarkup(keyboard=[[obosratsa]],one_time_keyboard=True)
+@dp.message(Command(commands=["start_meme"]))
+async def start_obosratsa(message:Message):
+    await message.answer(text="Бу!")
+    await message.answer(text="Испгался?",reply_markup=kb)
+@dp.message(F.text=="Обосрался")
+async def procces_button(message:Message):
+    await message.answer(text="Трус)",reply_markup=ReplyKeyboardRemove())
+
+@dp.message(Command(commands=["bruteforce"]))
+async def bruteforce_start(message:Message):
+    await message.answer(text="Полный перебор (или метод «грубой силы», англ. brute force) — метод решения математических задач. Относится к классу методов поиска решения исчерпыванием всевозможных вариантов[англ.]. Сложность полного перебора зависит от количества всех возможных решений задачи. Если пространство решений очень велико, то полный перебор может не дать результатов в течение нескольких лет или даже столетий.")
+
+@dp.message(Command(commands=["mine_efirum"]))
+async def mine_start(message:Message):
+    await message.answer(text="Майню эфирум...")
+
+
+async def help(message:Message):
+    await message.answer(text="Позвони в 112, не знаю ¯\_(ツ)_/¯")
+async def calc(message:Message):
+    await message.answer(text="Win+R calc.exe ^_^")
+async def game(message:Message):
+    await message.answer(text="квак 3 арена запусти, не знаю =)")
+async def meme(message:Message):
+    await message.answer(text="👇ВНИЗУ ССЫЛКА НА НИНДЗЯГРАМ👇",reply_markup=kb2)
+async def demo(message:Message):
+    await message.answer(text="Привет я де***о-свинья. я умею... ну пока ничего дельного . пожалуйста попользуйтесь этим ботом :3")
+async def usd_to_rub(message:Message):
+    await message.answer(text="1 USD = 77,80 RUB (11.07.2025)")
+async def working_calc1(message:Message):
+    await message.answer(text="Введи числа для действий через пробел:")
+async def working_calc2(message:Message):
+    global a, b
+    if message.text in ['Сложить', "Вычесть", "Перемножить", "Разделить"]:
+        if message.text=="Сложить":
+            await message.answer(text="Плюсую...")
+            c=a+b
+            await message.answer(text=f"Готово! Ответ: {c}")
+        if message.text=="Вычесть":
+            await message.answer(text="Вычитаю...")
+            c=a-b
+            await message.answer(text=f"Готово! Ответ: {c}")
+        if message.text=="Перемножить":
+            await message.answer(text="Умножаю...")
+            c=a*b
+            await message.answer(text=f"Готово! Ответ: {c}")
+        if message.text=="Разделить":
+            await message.answer(text="Делю...")
+            c=a/b
+            await message.answer(text=f"Готово! Ответ: {c}")
+    else:
+        numbers = list(map(int, message.text.split(' ')))
+        if len(numbers) == 2:
+            a, b = numbers
+            await message.answer(text="Выбери действие👇",reply_markup=kb3)
+
+dp.message.register(usd_to_rub,Command(commands=["usdtorub"]))
+
+dp.message.register(help,Command(commands=["help"]))
+dp.message.register(calc,Command(commands=["calc"]))
+dp.message.register(game,Command(commands=["game"]))
+dp.message.register(meme,Command(commands=["meme"]))
+dp.message.register(demo,Command(commands=["demo"]))
+dp.message.register(working_calc1,Command(commands=["w_calc"]))
+dp.message.register(working_calc2,F.text)
 dp.message.register(echo_document,F.conten_type == ContentType.DOCUMENT)
 dp.message.register(echo_sticker,F.sticker)
 dp.message.register(echo_image,F.content_type == ContentType.PHOTO)
