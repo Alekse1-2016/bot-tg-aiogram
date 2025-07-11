@@ -52,39 +52,32 @@ async def usd_to_rub(message:Message):
 async def working_calc1(message:Message):
     await message.answer(text="Введи числа для действий через пробел:")
 async def working_calc2(message:Message):
-    global a
-    global c
-    global b
-    numbers=message.text.split(" ")
-    for i in numbers:
-        if not i.isdigit():
-            
-
-        global a
-        global c
-        global b
-        a=int(numbers[0])
-        b=int(numbers[1])
-        await message.answer(text="Обработка...")
-        await message.answer(text="Выбери действие👇",reply_markup=kb3)
-    if message.text=="Сложить":
-        await message.answer(text="Плюсую...")
-        c=a+b
-        await message.answer(text=f"Готово! Ответ: {c}")
-    if message.text=="Вычесть":
-        await message.answer(text="Вычитаю...")
-        c=a-b
-        await message.answer(text=f"Готово! Ответ: {c}")
-    if message.text=="Перемножить":
-        await message.answer(text="Умножаю...")
-        c=a*b
-        await message.answer(text=f"Готово! Ответ: {c}")
-    if message.text=="Разделить":
-        await message.answer(text="Делю...")
-        c=a/b
-        await message.answer(text=f"Готово! Ответ: {c}")
+    global a, b
+    if message.text in ['Сложить', "Вычесть", "Перемножить", "Разделить"]:
+        if message.text=="Сложить":
+            await message.answer(text="Плюсую...")
+            c=a+b
+            await message.answer(text=f"Готово! Ответ: {c}")
+        if message.text=="Вычесть":
+            await message.answer(text="Вычитаю...")
+            c=a-b
+            await message.answer(text=f"Готово! Ответ: {c}")
+        if message.text=="Перемножить":
+            await message.answer(text="Умножаю...")
+            c=a*b
+            await message.answer(text=f"Готово! Ответ: {c}")
+        if message.text=="Разделить":
+            await message.answer(text="Делю...")
+            c=a/b
+            await message.answer(text=f"Готово! Ответ: {c}")
+    else:
+        numbers = list(map(int, message.text.split(' ')))
+        if len(numbers) == 2:
+            a, b = numbers
+            await message.answer(text="Выбери действие👇",reply_markup=kb3)
 
 dp.message.register(usd_to_rub,Command(commands=["usdtorub"]))
+
 dp.message.register(help,Command(commands=["help"]))
 dp.message.register(calc,Command(commands=["calc"]))
 dp.message.register(game,Command(commands=["game"]))
